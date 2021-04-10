@@ -6,7 +6,8 @@
  *
  * Name: Kamyab Rouhifar Student ID: 147742183 Date: 2021-03-26
  * 
- * Online Link: https://kamyab-spotify.vercel.app/
+ * Online Link:   https://kamyab-spotify.vercel.app/
+ * Online Link_2: https://kamyab-spotify.netlify.app/
  *
  ********************************************************************************/
 
