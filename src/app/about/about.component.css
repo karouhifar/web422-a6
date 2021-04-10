@@ -1,0 +1,13 @@
+.example-card {
+    max-width: 50%;
+    margin: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0  auto;
+    background-color: darkgrey;
+    color: white;
+  }
+  mat-card-subtitle {
+      color: tomato;
+  }

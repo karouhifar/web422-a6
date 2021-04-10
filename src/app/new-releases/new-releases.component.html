@@ -1,0 +1,94 @@
+<div>
+  <div class="container-fluid">
+    <div class="row" style="padding: 20px">
+      <div class="col-sm-12 p-3 mb-2 bg-primary text-white">New Releases</div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <ngb-carousel>
+          <ng-template ngbSlide>
+            <img
+              [src]="images[0]"
+              class="img-fluid img-thumbnail rounded"
+              alt="Delhi Metro"
+            />
+            <div class="carousel-caption">
+              <h3 style="color: rgb(226, 221, 221)">New adventure</h3>
+            </div>
+          </ng-template>
+
+          <ng-template ngbSlide>
+            <img
+              [src]="images[1]"
+              class="img-fluid img-thumbnail rounded"
+              alt="Bangalore Metro"
+            />
+            <div class="carousel-caption">
+              <h3 style="color: rgb(226, 221, 221)">New style</h3>
+            </div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <img
+              [src]="images[2]"
+              class="img-fluid img-thumbnail rounded"
+              alt="Channai Metro"
+            />
+            <div class="carousel-caption">
+              <h3 style="color: rgb(226, 221, 221)">New Music</h3>
+            </div>
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="card bg-light mb-3">
+    <div class="card-header">The following is a list of new releases.</div>
+    <div class="card-body">
+      <p class="card-text">
+        Click the <strong>album cover</strong> or
+        <strong>artist name</strong> for more information.
+      </p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div fxLayout="row wrap" fxFlexAlign="stretch">
+      <!-- Single "Responsive" Card-->
+      <div fxFlex [style.margin]="'20px'" *ngFor="let releaseData of releases">
+        <mat-card [style.min-width]="'200px'">
+          <mat-card-header>
+            <mat-card-title>{{ releaseData.name }}</mat-card-title>
+            <mat-card-subtitle>New Release</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            [routerLink]="['/album', releaseData.id]"
+            routerLinkActive="active"
+            mat-card-image
+            class="album-cover"
+            [src]="releaseData.images[0].url"
+            alt="album art"
+          />
+          <strong>Release Date: </strong
+          >{{ releaseData.release_date | date: "shortDate" }}<br />
+          <strong>Tracks: </strong>{{ releaseData.total_tracks }}<br /><br />
+          <mat-card-content>
+            <mat-chip-list
+              aria-label="Artist selection"
+              *ngFor="let artist of releaseData.artists"
+            >
+              <a>
+                <mat-chip
+                  [routerLink]="['/artist', artist.id]"
+                  routerLinkActive="active"
+                  >{{ artist.name }}</mat-chip
+                >
+              </a>
+            </mat-chip-list>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Train+One&display=swap');
+
+.bg-primary {
+font-family: 'Montserrat', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Train One', cursive;
+font-size: 2em;
+font-weight: 300;
+border-radius: 10px;
+text-align: center;
+}
+
+.carousel-caption h3 {
+    font-weight: bolder;
+    font-size: 2rem;
+    background-color: #313131;
+    padding: 10px;
+    border-radius: 10px;
+}

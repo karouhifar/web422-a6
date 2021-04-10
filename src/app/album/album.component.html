@@ -1,0 +1,52 @@
+<div>
+    <div *ngIf="album">
+    
+        <h1>{{album.name}}</h1>
+        <p>Full track listing for {{album.name}}</p>
+        <p>Click the <mat-icon mat-list-icon>queue_music</mat-icon> icon to add a song to your favourites list</p>
+        <mat-card>
+            <mat-card-content fxLayout="row wrap" fxLayout.xs="column">
+                <div fxflex><img [src]="album.images[1].url" alt="album cover" [style.margin]="'10px'" [style.max-width]="'90%'" /></div>
+                <div fxFlex>
+                    <div [style.min-width]="'300px'" [style.margin]="'10px'">
+                        <strong>Record Label: </strong>{{album.label}}<br />
+                        <strong>Release Date: </strong> {{album.release_date | date:'shortDate' }}<br /><br />
+                        <strong>Tracks:</strong> {{album.total_tracks}}<br />
+                        <strong>Popularity: </strong>{{album.popularity}}<br /><br />
+
+                        <mat-chip-list aria-label="Artist selection" *ngFor="let artist of album.artists">
+                            <a>
+                                <mat-chip [routerLink]="['/artist',artist.id]"  routerLinkActive="active" >{{artist.name}}</mat-chip>
+                                </a>
+                        </mat-chip-list>
+                        <br />
+
+                        <div *ngFor="let copyright of album.copyrights">{{copyright.text}}
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <br /><br />
+        <h2>Track Listing</h2>
+
+        <mat-list>
+            <!-- Single "Responsive" Material List Item-->
+            <mat-list-item *ngFor="let itemTrack of album.tracks.items">
+                <mat-icon (click)="addToFavourites(itemTrack.id)" mat-list-icon>queue_music</mat-icon>
+                <div mat-line>
+                    <mat-card>
+                        <mat-card-content>{{itemTrack.track_number}} {{itemTrack.name}} - {{(itemTrack.duration_ms / 60000).toFixed(2)}} <!-- NOTE 3.34 was determined by using (duration_ms / 60000).toFixed(2) -->
+                        </mat-card-content>
+                        <div *ngIf="itemTrack.preview_url"><br /><audio controls [src]="itemTrack.preview_url"></audio></div>
+                    </mat-card>
+                 <br>
+                </div>
+            </mat-list-item>
+            <!-- -->
+        </mat-list>
+    </div>
+    <div *ngIf="!album">
+        <p>Loading...</p>
+    </div>
+</div>
